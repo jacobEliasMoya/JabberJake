@@ -19,12 +19,12 @@ export default function Home() {
         />
       </aside>
 
-      <section className="w-full p-2 flex items-center flex-col justify-between">
+      <section className="w-full p-2 flex items-center flex-col justify-between relative">
         <Header />
-        <div className="w-full md:w-4/5 lg:w-3/5 mx-auto flex items-center flex-col justify-between gap-2">
-          <h2 className="flex flex-row justify-between items-center gap-1 px-2 text-3xl mb-4 font-semibold   text-zinc-400">
+        <div className="w-full md:w-4/5 lg:w-3/5 mx-auto flex items-center flex-col justify-center gap-2 h-full">
+          <h2 className="flex flex-row justify-between items-center gap-4 px-2 text-3xl mb-2 font-semibold text-zinc-300">
             <span> Hey There! </span>
-            Ready To Chat With Your Buddies
+            Ready To Chat?
           </h2>
           <Form />
           <Disclaimer />
