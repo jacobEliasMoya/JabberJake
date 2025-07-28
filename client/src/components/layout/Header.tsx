@@ -3,7 +3,7 @@ import { FiShare } from "react-icons/fi";
 
 const Header = () => {
   return (
-    <header className="w-full flex flex-row justify-between items-center">
+    <header className="w-full flex flex-row justify-between items-center sticky top-0">
       <div className="font-semibold w-max px-2 py-1 hover:bg-zinc-800 rounded-lg cursor-pointer">
         <h1 className="flex flex-row justify-between items-center gap-2 font-bold">
           JabberJake

@@ -5,14 +5,27 @@ import { FaArrowUp, FaEllipsisH } from "react-icons/fa";
 
 interface FormState {
   username: string | undefined;
+  maxLength: number;
   hasJoined: boolean;
 }
 
 const Form = () => {
   const [formState, setFormState] = useState<FormState>({
     username: "",
+    maxLength: 20,
     hasJoined: false,
   });
+
+  const lengthErrorRenderer = () => {
+
+    if(!formState.username) return;
+
+    if (formState.maxLength <= formState.username?.length) {
+      return(
+        <p className="absolute left-1/2 -translate-x-1/2 top-full pt-4 text-red-400 font-sans">{`No more than ${formState.maxLength} characters`}</p>
+      )
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +38,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-end gap-2 w-full max-w-2xl bg-zinc-800 rounded-3xl p-2 "
+      className="relative flex flex-row items-center gap-2 w-full max-w-2xl bg-zinc-800 rounded-3xl p-2 "
     >
       <input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +55,12 @@ const Form = () => {
       >
         {formState.username ? <FaArrowUp /> : <FaEllipsisH />}
       </button>
+
+      {lengthErrorRenderer()}
+
     </form>
+
+    
   );
 };
 
