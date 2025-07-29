@@ -1,5 +1,6 @@
 "use client";
 
+import { Lexend } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import { FaArrowUp, FaEllipsisH } from "react-icons/fa";
 
@@ -16,15 +17,16 @@ const Form = () => {
     hasJoined: false,
   });
 
-  const lengthErrorRenderer = () => {
+  const lengthRenderer = () => {
+    const { username, maxLength } = formState;
 
-    if(!formState.username) return;
+    const length = username?.length;
 
-    if (formState.maxLength <= formState.username?.length) {
-      return(
-        <p className="absolute left-1/2 -translate-x-1/2 top-full pt-4 text-red-400 font-sans">{`No more than ${formState.maxLength} characters`}</p>
-      )
-    }
+    return (
+      <p className="absolute left-1/2 -translate-x-1/2 top-full text-green-200 pt-4 font-sans">
+        {`${length} /${maxLength}`}
+      </p>
+    );
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,8 +48,9 @@ const Form = () => {
         }}
         name=""
         id=""
+        maxLength={formState.maxLength}
         className="w-full p-2 outline-none resize-none"
-      ></input>
+      />
 
       <button
         type="submit"
@@ -56,11 +59,8 @@ const Form = () => {
         {formState.username ? <FaArrowUp /> : <FaEllipsisH />}
       </button>
 
-      {lengthErrorRenderer()}
-
+      {lengthRenderer()}
     </form>
-
-    
   );
 };
 
