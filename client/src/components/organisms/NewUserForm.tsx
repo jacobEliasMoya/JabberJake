@@ -1,9 +1,8 @@
 "use client";
 
-import { Lexend } from "next/font/google";
 import React, { useEffect, useState } from "react";
 import { FaArrowUp, FaEllipsisH } from "react-icons/fa";
-
+import clsx from "clsx";
 interface FormState {
   username: string | undefined;
   maxLength: number;
@@ -11,20 +10,29 @@ interface FormState {
 }
 
 const Form = () => {
+  
   const [formState, setFormState] = useState<FormState>({
     username: "",
     maxLength: 20,
     hasJoined: false,
   });
 
-  const lengthRenderer = () => {
-    const { username, maxLength } = formState;
+  const { username, maxLength } = formState;
 
-    const length = username?.length;
+  const length = username?.length;
+
+  const lengthRenderer = () => {
+    const lengthIndicationColor =
+      username?.length === maxLength ? "text-red-400" : "text-green-300";
 
     return (
-      <p className="absolute left-1/2 -translate-x-1/2 top-full text-green-200 pt-4 font-sans">
-        {`${length} /${maxLength}`}
+      <p
+        className={clsx(
+          "absolute left-1/2 -translate-x-1/2 top-full  pt-4 font-sans",
+          lengthIndicationColor
+        )}
+      >
+        {`${length} / ${maxLength}`}
       </p>
     );
   };
@@ -32,10 +40,6 @@ const Form = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
-
-  useEffect(() => {
-    console.log(formState.username);
-  }, [formState.username]);
 
   return (
     <form
