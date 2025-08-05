@@ -1,2 +1,7 @@
-# Node
-.env
+# Ignore env files
+**/.env
+
+# Ignore Prisma artifacts
+**/node_modules/
+**/.prisma/
+**/src/generated/
