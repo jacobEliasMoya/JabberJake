@@ -10,7 +10,6 @@ interface FormState {
 }
 
 const Form = () => {
-  
   const [formState, setFormState] = useState<FormState>({
     username: "",
     maxLength: 20,
