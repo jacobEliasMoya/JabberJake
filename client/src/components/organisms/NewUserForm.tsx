@@ -36,21 +36,35 @@ const Form = () => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const body = JSON.stringify({
+      username: username,
+    });
+
+    await fetch("/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
   };
 
   return (
     <form
       onSubmit={handleSubmit}
+      action="http://localhost:1337/users"
+      method="POST"
       className="relative flex flex-row items-center gap-2 w-full max-w-2xl bg-zinc-800 rounded-3xl p-2 "
     >
       <input
+        value={username}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setFormState({ ...formState, username: e.target.value });
+          setFormState({
+            ...formState,
+            username: e.target.value.replace(/\s+/g, ""),
+          });
         }}
-        name=""
-        id=""
         maxLength={formState.maxLength}
         className="w-full p-2 outline-none resize-none"
       />

@@ -27,6 +27,7 @@ export default function Home() {
           </h2>
 
           <Form />
+          
         </div>
       </section>
     </main>
