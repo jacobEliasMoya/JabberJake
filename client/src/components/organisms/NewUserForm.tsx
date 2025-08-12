@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaArrowUp, FaEllipsisH } from "react-icons/fa";
 import clsx from "clsx";
 interface FormState {
@@ -10,17 +10,18 @@ interface FormState {
 }
 
 const Form = () => {
+  // setting state
   const [formState, setFormState] = useState<FormState>({
     username: "",
     maxLength: 20,
     hasJoined: false,
   });
 
+  // destructuring state for ease of use
   const { username, maxLength } = formState;
 
-  const length = username?.length;
-
   const lengthRenderer = () => {
+    const length = username?.length;
     const lengthIndicationColor =
       username?.length === maxLength ? "text-red-400" : "text-green-300";
 
@@ -43,11 +44,15 @@ const Form = () => {
       username: username,
     });
 
-    await fetch("/users", {
+    fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body,
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
