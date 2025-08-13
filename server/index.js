@@ -1,29 +1,30 @@
 import http from "http";
 import { PrismaClient } from "@prisma/client";
+import { resolve } from "path";
+import { rejects } from "assert";
 
 const port = "1337";
 const prisma = new PrismaClient();
 
-const server = http.createServer((req, res) => {
-  if (req.method === "POST" && req.url === "/users") {
+// util to parse data into json
+const dataParser = async (req) => {
+  return new Promise((resolve, reject) => {
     let raw = "";
-
     req.on("data", (c) => (raw += c));
-
     req.on("end", () => {
       try {
-        const data = raw ? JSON.parse(raw) : {};
-        res.writeHead(201, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ recieved: data }));
-        return;
-
-      } catch(err) {
-        res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Malformed JSON" }));
-        return;
-
+        resolve(raw ? JSON.parse(raw) : {});
+      } catch (err) {
+        reject(err);
       }
     });
+  });
+};
+
+const server = http.createServer(async (req, res) => {
+  if (req.method === "POST" && req.url === "/users") {
+    const { username } = await dataParser(req);
+    
   }
 });
 
