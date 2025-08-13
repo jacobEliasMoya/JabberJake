@@ -13,9 +13,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model UserModel {
   id        String   @id @default(cuid())
-  username  String   @default("Guest")
-  isOnline  Boolean  @default(false)
+  username  String   @unique
   createdAt DateTime @default(now())
 }

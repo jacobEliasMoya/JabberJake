@@ -1,5 +1,8 @@
 import http from "http";
+import { PrismaClient } from "@prisma/client";
+
 const port = "1337";
+const prisma = new PrismaClient();
 
 const server = http.createServer((req, res) => {
   if (req.method === "POST" && req.url === "/users") {
@@ -10,7 +13,6 @@ const server = http.createServer((req, res) => {
     req.on("end", () => {
       try {
         const data = raw ? JSON.parse(raw) : {};
-
         res.writeHead(201, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ recieved: data }));
         return;
