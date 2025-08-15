@@ -24,7 +24,18 @@ const dataParser = async (req) => {
 const server = http.createServer(async (req, res) => {
   if (req.method === "POST" && req.url === "/users") {
     const { username } = await dataParser(req);
-    
+
+    await prisma.userModel.create({
+      data: {
+        username: username,
+      },
+    });
+
+    const users = await prisma.userModel.findMany({
+      select: { username: true },
+    });
+
+    console.log(users)
   }
 });
 
