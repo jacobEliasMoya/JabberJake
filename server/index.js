@@ -1,7 +1,6 @@
 import http from "http";
 import { PrismaClient } from "@prisma/client";
-import { resolve } from "path";
-import { rejects } from "assert";
+import { create } from "domain";
 
 const port = "1337";
 const prisma = new PrismaClient();
@@ -21,10 +20,8 @@ const dataParser = async (req) => {
   });
 };
 
-const server = http.createServer(async (req, res) => {
-  if (req.method === "POST" && req.url === "/users") {
-    const { username } = await dataParser(req);
-
+const createUser = async (username) => {
+  try {
     await prisma.userModel.create({
       data: {
         username: username,
@@ -35,7 +32,17 @@ const server = http.createServer(async (req, res) => {
       select: { username: true },
     });
 
-    console.log(users)
+    console.log(users);
+
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const server = http.createServer(async (req, res) => {
+  if (req.method === "POST" && req.url === "/users") {
+    const { username } = await dataParser(req);
+    createUser(username);
   }
 });
 
