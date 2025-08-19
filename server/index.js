@@ -27,13 +27,6 @@ const createUser = async (username) => {
         username: username,
       },
     });
-
-    const users = await prisma.userModel.findMany({
-      select: { username: true },
-    });
-
-    console.log(users);
-
   } catch (e) {
     console.log(e);
   }
