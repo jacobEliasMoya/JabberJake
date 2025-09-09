@@ -1,6 +1,5 @@
 import http from "http";
 import { PrismaClient } from "@prisma/client";
-import { create } from "domain";
 
 const port = "1337";
 const prisma = new PrismaClient();
@@ -26,7 +25,11 @@ const createUser = async (username) => {
       data: {
         username: username,
       },
+
     });
+
+    const users = await prisma.userModel.findMany();
+
   } catch (e) {
     console.log(e);
   }
