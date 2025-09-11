@@ -1,7 +1,13 @@
+// basic node server, need to work more in the AM rather than so late - loosing progress
+
+
 import http from "http";
 import { PrismaClient } from "@prisma/client";
 
+// setting port
 const port = "1337";
+
+// initializing prisma client
 const prisma = new PrismaClient();
 
 // util to parse data into json
