@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${libreCaslon.variable} antialiased bg-zinc-900 text-white font-calistoga`}
+        className={`${libreCaslon.variable} antialiased bg-gradient-to-bl from-zinc-800 to-zinc-950 text-white font-calistoga`}
       >
         {children}
       </body>

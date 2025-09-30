@@ -1,6 +1,5 @@
 // basic node server, need to work more in the AM rather than so late - loosing progress
 
-
 import http from "http";
 import { PrismaClient } from "@prisma/client";
 
@@ -31,11 +30,9 @@ const createUser = async (username) => {
       data: {
         username: username,
       },
-
     });
 
     const users = await prisma.userModel.findMany();
-
   } catch (e) {
     console.log(e);
   }
