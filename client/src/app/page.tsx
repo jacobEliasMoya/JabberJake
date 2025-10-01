@@ -16,21 +16,20 @@ export default function Home() {
           height={40}
           sizes=""
           placeholder="empty"
-        />
+        /> 
 
-        <RxHamburgerMenu className="w-8 h-auto hidden"/>
+        <RxHamburgerMenu className="w-8 h-auto hidden" />
+        
       </aside>
 
       <section className="w-full p-4 pb-14 md:pb-4 flex items-end flex-col justify-between relative h-11/12 md:h-full">
         <Header />
 
-        <div className="w-full mx-auto flex items-center flex-col justify-end md:justify-center gap-2 h-full">
+        <div className="w-full mx-auto flex items-center flex-col justify-end md:justify-center gap-4 h-full">
           <h2 className="text-xl md:text-3xl mb-1 font-semibold text-zinc-300 capitalize">
-            to chat enter a username 😊
+            to chat enter a username
           </h2>
-
           <Form />
-          
         </div>
       </section>
     </main>
