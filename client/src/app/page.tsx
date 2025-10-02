@@ -1,26 +1,12 @@
-import Disclaimer from "@/components/atoms/Disclaimer";
 import Form from "@/components/organisms/NewUserForm";
-import JakeLogo from "../../public/jabberjake.png";
-import { RxHamburgerMenu } from "react-icons/rx";
+import Disclaimer from "@/components/atoms/Disclaimer";
 import Header from "@/components/layout/Header";
-import Image from "next/image";
+import Aside from "@/components/layout/Aside";
 
 export default function Home() {
   return (
     <main className="w-full min-h-screen h-screen flex flex-col md:flex-row">
-      <aside className="flex items-center md:items-start w-full md:w-max border-b-1 md:border-t-0 md:border-r-1 p-3 border-zinc-700/30 h-1/12 md:h-full justify-between rounded-b-xl md:rounded-b-none">
-        <Image
-          src={JakeLogo}
-          alt=""
-          width={40}
-          height={40}
-          sizes=""
-          placeholder="empty"
-        /> 
-
-        <RxHamburgerMenu className="w-8 h-auto hidden" />
-        
-      </aside>
+      <Aside />
 
       <section className="w-full p-4 pb-14 md:pb-4 flex items-end flex-col justify-between relative h-11/12 md:h-full">
         <Header />
