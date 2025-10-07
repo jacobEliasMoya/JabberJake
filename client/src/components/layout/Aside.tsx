@@ -1,6 +1,7 @@
 import JakeLogo from "../../../public/jabberjake.png";
 import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
+import IconRenderer from "../atoms/IconRenderer";
 
 const Aside = () => {
   return (
@@ -14,7 +15,11 @@ const Aside = () => {
         placeholder="empty"
       />
 
-      <RxHamburgerMenu className="w-8 h-auto hidden" />
+      <IconRenderer
+        icon={"hamburgerMenu"}
+        size={"md"}
+        additionalClasses={"md:hidden cursor-pointer"}
+      />
     </aside>
   );
 };
