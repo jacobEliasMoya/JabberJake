@@ -1,5 +1,6 @@
 import { FaChevronDown } from "react-icons/fa";
 import { FiShare } from "react-icons/fi";
+import IconRenderer from "../atoms/IconRenderer";
 
 const Header = () => {
   return (
@@ -8,7 +9,12 @@ const Header = () => {
         <h1 className="flex flex-row justify-between items-center gap-2 font-bold">
           JabberJake
           <span className="text-zinc-600 tracking-tight font-black text-sm flex flex-row justify-between items-center gap-1">
-            V.1 <FaChevronDown className="text-xs text-zinc-500" />
+            V.1
+            <IconRenderer
+              additionalClasses="text-xs text-zinc-500"
+              icon={"downIcon"}
+              size={"md"}
+            />
           </span>
         </h1>
       </div>
@@ -16,7 +22,11 @@ const Header = () => {
         <div className="font-semibold w-max p-1 hover:bg-zinc-800 rounded-lg cursor-pointer">
           <h2 className="flex flex-row justify-between items-center gap-1 px-2">
             <span className="flex flex-row justify-between items-center">
-              <FiShare />
+              <IconRenderer
+                icon={"shareIcon"}
+                size={"md"}
+                additionalClasses={""}
+              />
             </span>
             Invite
           </h2>
