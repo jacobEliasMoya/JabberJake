@@ -1,9 +1,10 @@
 import { cn } from "@/util/util";
 import React from "react";
 import { IconType } from "react-icons";
-import { FaChevronDown } from "react-icons/fa";
+import {} from "react-icons/fa";
 import { FiShare } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { FaArrowUp, FaEllipsisH, FaChevronDown } from "react-icons/fa";
 
 type IconProps = {
   icon: string;
@@ -21,13 +22,15 @@ const IconRenderer = ({
   const icons: Record<string, IconType> = {
     hamburgerMenu: RxHamburgerMenu,
     downIcon: FaChevronDown,
-    shareIcon: FiShare
+    downArrow: FaArrowUp,
+    pendingDots: FaEllipsisH,
+    shareIcon: FiShare,
   };
 
   const sizes: StringObject = {
-    sm: "adsa",
-    md: "asd",
-    lg: "ads",
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-xl",
   };
 
   const selectedSize: string = sizes[size];

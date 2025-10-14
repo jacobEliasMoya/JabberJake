@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaArrowUp, FaEllipsisH } from "react-icons/fa";
 import clsx from "clsx";
+import IconRenderer from "../atoms/IconRenderer";
+
 interface FormState {
   username: string | undefined;
   maxLength: number;
@@ -78,7 +79,11 @@ const Form = () => {
         type="submit"
         className="bg-zinc-700 hover:bg-zinc-900 rounded-2xl w-max p-2 cursor-pointer"
       >
-        {formState.username ? <FaArrowUp /> : <FaEllipsisH />}
+        {formState.username ? (
+          <IconRenderer icon={"downArrow"} additionalClasses={""} size={""} />
+        ) : (
+          <IconRenderer icon={"pendingDots"} additionalClasses={""} size={""} />
+        )}
       </button>
 
       {lengthRenderer()}
